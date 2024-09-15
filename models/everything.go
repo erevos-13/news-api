@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/erevos-13/news-api/utils"
+	"github.com/erevos-13/newsapigo/utils"
 )
 
 type Article struct {
