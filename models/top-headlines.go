@@ -28,20 +28,21 @@ func (th TopHeadlines) GetTopHeadlines() (Response, error) {
 	if th.KeywordsQuery != "" {
 		params = append(params, fmt.Sprintf("q=%s", th.KeywordsQuery))
 	}
-
+	queryParams := map[string]string{
+		"country":  th.Country,
+		"category": th.Category,
+	}
+	for key, value := range queryParams {
+		if value != "" {
+			params = append(params, fmt.Sprintf("%s=%s", key, value))
+		}
+	}
 	if th.PageSize != 0 {
 		params = append(params, fmt.Sprintf("pageSize=%d", th.PageSize))
 	}
 	if th.Page != 0 {
 		params = append(params, fmt.Sprintf("page=%d", th.Page))
 	}
-	if th.Country != "" {
-		params = append(params, fmt.Sprintf("country=%s", th.Country))
-	}
-	if th.Category != "" {
-		params = append(params, fmt.Sprintf("category=%s", th.Category))
-	}
-
 	reqUrl := fmt.Sprintf("%s?%s", baseUrl, strings.Join(params, "&"))
 
 	resp, err := http.Get(reqUrl)

@@ -42,26 +42,26 @@ func (ev Everything) GetEverything() (Response, error) {
 
 	params = append(params, fmt.Sprintf("apiKey=%s", utils.GetApiKey()))
 	params = append(params, fmt.Sprintf("q=%s", ev.KeywordsQuery))
-	if ev.From != "" {
-		params = append(params, fmt.Sprintf("from=%s", ev.From))
+	queryParams := map[string]string{
+		"from":           ev.From,
+		"to":             ev.To,
+		"language":       ev.Language,
+		"sortBy":         ev.SortBy,
+		"domains":        ev.Domains,
+		"excludeDomains": ev.ExcludeDomains,
 	}
-	if ev.To != "" {
-		params = append(params, fmt.Sprintf("to=%s", ev.To))
+
+	for key, value := range queryParams {
+		if value != "" {
+			params = append(params, fmt.Sprintf("%s=%s", key, value))
+		}
 	}
-	if ev.Language != "" {
-		params = append(params, fmt.Sprintf("language=%s", ev.Language))
-	}
+
 	if ev.PageSize != 0 {
 		params = append(params, fmt.Sprintf("pageSize=%d", ev.PageSize))
 	}
 	if ev.Page != 0 {
 		params = append(params, fmt.Sprintf("page=%d", ev.Page))
-	}
-	if ev.SortBy != "" {
-		params = append(params, fmt.Sprintf("sortBy=%s", ev.SortBy))
-	}
-	if ev.Domains != "" {
-		params = append(params, fmt.Sprintf("domains=%s", ev.Domains))
 	}
 	finalUrl := fmt.Sprintf("%s?%s", baseUrl, strings.Join(params, "&"))
 	res, err := http.Get(finalUrl)
