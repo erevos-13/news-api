@@ -13,7 +13,7 @@ This project is a Go library for interacting with the [News API](https://newsapi
 To install the library, use `go get`:
 
 ```sh
-go get github.com/erevos-13/newsapigo
+go get github.com/erevos-13/news-api-go
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ package main
 import (
     "fmt"
     "log"
-    "github.com/erevos-13/newsapigo"
+    "github.com/erevos-13/news-api-go"
 )
 
 func main() {

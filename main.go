@@ -1,8 +1,8 @@
 package newsapi
 
 import (
-	"github.com/erevos-13/newsapigo/models"
-	"github.com/erevos-13/newsapigo/utils"
+	"github.com/erevos-13/news-api-go/models"
+	"github.com/erevos-13/news-api-go/utils"
 )
 
 const API_KEY string = "default"

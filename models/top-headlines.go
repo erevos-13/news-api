@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/erevos-13/newsapigo/utils"
+	"github.com/erevos-13/news-api-go/utils"
 )
 
 type TopHeadlines struct {
