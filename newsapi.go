@@ -7,16 +7,16 @@ import (
 
 const API_KEY string = "default"
 
-type NewsApi struct {
+type NewsApiResponse struct {
 	Everything   models.Everything
 	TopHeadlines models.TopHeadlines
 	Source       models.SourceParams
 }
 
-func NewApi(apiKey string, version string) NewsApi {
+func NewsApi(apiKey string, version string) NewsApiResponse {
 	utils.SetApiKey(apiKey)
 	utils.SetVersion(version)
-	return NewsApi{
+	return NewsApiResponse{
 		Everything:   *models.EverythingNew(),
 		TopHeadlines: *models.TopHeadlinesNew(),
 		Source:       *models.SourceNew(),
